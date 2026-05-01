@@ -1,51 +1,51 @@
 class Maru < Formula
   desc "Unified profile manager for AI coding agents (Claude, Codex, Gemini)"
   homepage "https://github.com/itsgg/maru"
-  version "0.1.0-alpha.3"
+  version "0.1.0-alpha.4"
   license any_of: ["Apache-2.0", "MIT"]
 
   on_macos do
     on_arm do
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "54bb0c2482ed6f1fde07d7ce17362157d2cf76ed6f2c01ce5177f24fd7b1abdf"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "ccc44dc70f89a0eee337d413ed7497824afcb011a14e3aad22bc8fff1ef73bf3"
     end
     on_intel do
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "c4533bf4cdcc45ae20c59577c1362e8e20047e95362da0a8c99c3b5499c35a75"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "72104b11f6fcdcd638845fe2a0fd71be843351a75f7e06e4a8c78d4213904ac7"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "9026264c202033d085a44d12f8dbbf02d1cccd5b5e740d4b70d0f123cb13334f"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-cli-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "c11aecc66b5ef7ccf5b7eb4d352db5f372bad972e2338dd333ff566a74901cfd"
     end
     on_intel do
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "c31084e05dff41386dccd6799da010bdfd8ecf283a90cff6e04dcd75f88184ae"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "fe2513228146f90d0b129d523beb479f498f61bc00015c450478d6e005a07f6a"
     end
   end
 
   resource "maru-shim" do
     on_macos do
       on_arm do
-        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-aarch64-apple-darwin.tar.xz"
-        sha256 "ff1a7ad639debfb4e6ba684706229835f3d88f5d2fb823b1781da0116d8b17bc"
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-shim-aarch64-apple-darwin.tar.xz"
+        sha256 "c4259fd2f23c07d42eb2e0ba7218ef0abf1481f5047eb564401d906490c888dd"
       end
       on_intel do
-        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-x86_64-apple-darwin.tar.xz"
-        sha256 "1d4a47cd73ea30127fe014b89bb24e906b9626a3ec8cd188f724dba1e54d7392"
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-shim-x86_64-apple-darwin.tar.xz"
+        sha256 "84aff4da8689c549b3759fc2226057a67ae845b282bcfaa6559dc7ce4ae6dca4"
       end
     end
 
     on_linux do
       on_arm do
-        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-aarch64-unknown-linux-gnu.tar.xz"
-        sha256 "eb9e9067ad09839baa96d954f29471c98768b070764a4288fecb2bff61a9d900"
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-shim-aarch64-unknown-linux-gnu.tar.xz"
+        sha256 "8a51f3ae9c567d31f2484a25289e3bf6e27709159527428ef46d0bc4648d6e17"
       end
       on_intel do
-        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-x86_64-unknown-linux-gnu.tar.xz"
-        sha256 "073e57e8a747ae7c791370c3b017f889e9c9574ee53e3e828a37c81947b745a1"
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.4/maru-shim-x86_64-unknown-linux-gnu.tar.xz"
+        sha256 "8e204433bb7e7c29c8d99b6ea753f697875d1b1535161873156699baea99e016"
       end
     end
   end
