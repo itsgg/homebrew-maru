@@ -1,25 +1,25 @@
 class MaruShim < Formula
   desc "Hot-path shim binary. argv[0] dispatches to the right harness adapter."
   homepage "https://github.com/itsgg/maru"
-  version "0.1.0-alpha.2"
+  version "0.1.0-alpha.3"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-shim-aarch64-apple-darwin.tar.xz"
-      sha256 "7b99d57ccf99afa39f0c725609b4b6a449e7439955c4937f0b63ddbbed688901"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-aarch64-apple-darwin.tar.xz"
+      sha256 "ff1a7ad639debfb4e6ba684706229835f3d88f5d2fb823b1781da0116d8b17bc"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-shim-x86_64-apple-darwin.tar.xz"
-      sha256 "8239204b2cc91a475efcee39686a2986c338e390bfa81c121d6200c53245a072"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-x86_64-apple-darwin.tar.xz"
+      sha256 "1d4a47cd73ea30127fe014b89bb24e906b9626a3ec8cd188f724dba1e54d7392"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-shim-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "6cb3869c374d0fd543ed3af6ba1329edf732b54ff283b3db7c488d3635f8566b"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "eb9e9067ad09839baa96d954f29471c98768b070764a4288fecb2bff61a9d900"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-shim-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "7253b1f8dd5a447375c153973843e1ef217216d67b3faa65f589821b18aa3275"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "073e57e8a747ae7c791370c3b017f889e9c9574ee53e3e828a37c81947b745a1"
     end
   end
   license any_of: ["Apache-2.0", "MIT"]

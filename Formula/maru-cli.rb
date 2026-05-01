@@ -1,25 +1,25 @@
 class MaruCli < Formula
   desc "The `maru` profile-manager binary."
   homepage "https://github.com/itsgg/maru"
-  version "0.1.0-alpha.2"
+  version "0.1.0-alpha.3"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "aad37816b724f2ae70abf08493350522f38e8e9d34635405b2dda68872981fee"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "54bb0c2482ed6f1fde07d7ce17362157d2cf76ed6f2c01ce5177f24fd7b1abdf"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "b6fb4cd04483a6573f89b485ac898565f7582a2240fc1850dfe057fe1daf6c0c"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "c4533bf4cdcc45ae20c59577c1362e8e20047e95362da0a8c99c3b5499c35a75"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-cli-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "cc4e0ffa2938d1c2e17a64bf5c01ea28bb8f8d9c9aa595a6f1022ae95be0016a"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "9026264c202033d085a44d12f8dbbf02d1cccd5b5e740d4b70d0f123cb13334f"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.2/maru-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "8ed9176cbb315871f67b30bfc439dc6190a9a2a135fe2f1224128c387dad69cd"
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "c31084e05dff41386dccd6799da010bdfd8ecf283a90cff6e04dcd75f88184ae"
     end
   end
   license any_of: ["Apache-2.0", "MIT"]
