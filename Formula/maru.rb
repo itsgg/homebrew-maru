@@ -55,23 +55,25 @@ class Maru < Formula
     resource("maru-shim").stage do
       bin.install "maru-shim"
     end
-
-    # Wire the per-harness shim symlinks directly into brew's bin/ — brew
-    # already has it on PATH at high priority, so users don't need a
-    # separate `maru install` step. The shim reads argv[0] to dispatch.
-    %w[claude codex gemini].each do |name|
-      bin.install_symlink "maru-shim" => name
-    end
+    # The per-harness shim symlinks (claude/codex/gemini) are deliberately
+    # NOT installed into brew's bin: users typically already have those
+    # binaries from other brew packages (claude-code cask, codex cask,
+    # gemini-cli formula), and brew skips conflicting symlinks. The shim
+    # would never win. Instead, `maru install` creates a dedicated
+    # $MARU_HOME/bin and prepends it to PATH — that dir has only maru's
+    # symlinks, so the shim wins regardless of what else is installed.
   end
 
   def caveats
     <<~EOS
-      The `claude`, `codex`, and `gemini` shims are now on your PATH and
-      will dispatch through maru-shim. Set up at least one profile to
-      activate isolation:
+      One more step — wire the per-harness shims into a maru-owned PATH
+      entry that beats your existing claude / codex / gemini installs:
 
-        maru profile create work --harness claude,codex,gemini
-        maru profile use work
+        maru install
+
+      Then open a new terminal (or `source ~/.zshrc`). Verify with:
+
+        which claude   # should be inside $MARU_HOME/bin
 
       Default $MARU_HOME (per GENESIS §3):
         macOS:   ~/Library/Application Support/maru
