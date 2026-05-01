@@ -55,14 +55,23 @@ class Maru < Formula
     resource("maru-shim").stage do
       bin.install "maru-shim"
     end
+
+    # Wire the per-harness shim symlinks directly into brew's bin/ — brew
+    # already has it on PATH at high priority, so users don't need a
+    # separate `maru install` step. The shim reads argv[0] to dispatch.
+    %w[claude codex gemini].each do |name|
+      bin.install_symlink "maru-shim" => name
+    end
   end
 
   def caveats
     <<~EOS
-      Run `maru install` once to wire the shim symlinks (claude / codex / gemini)
-      into $MARU_HOME/bin and add it to your PATH:
+      The `claude`, `codex`, and `gemini` shims are now on your PATH and
+      will dispatch through maru-shim. Set up at least one profile to
+      activate isolation:
 
-        maru install
+        maru profile create work --harness claude,codex,gemini
+        maru profile use work
 
       Default $MARU_HOME (per GENESIS §3):
         macOS:   ~/Library/Application Support/maru
