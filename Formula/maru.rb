@@ -1,0 +1,77 @@
+class Maru < Formula
+  desc "Unified profile manager for AI coding agents (Claude, Codex, Gemini)"
+  homepage "https://github.com/itsgg/maru"
+  version "0.1.0-alpha.3"
+  license any_of: ["Apache-2.0", "MIT"]
+
+  on_macos do
+    on_arm do
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "54bb0c2482ed6f1fde07d7ce17362157d2cf76ed6f2c01ce5177f24fd7b1abdf"
+    end
+    on_intel do
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "c4533bf4cdcc45ae20c59577c1362e8e20047e95362da0a8c99c3b5499c35a75"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "9026264c202033d085a44d12f8dbbf02d1cccd5b5e740d4b70d0f123cb13334f"
+    end
+    on_intel do
+      url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "c31084e05dff41386dccd6799da010bdfd8ecf283a90cff6e04dcd75f88184ae"
+    end
+  end
+
+  resource "maru-shim" do
+    on_macos do
+      on_arm do
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-aarch64-apple-darwin.tar.xz"
+        sha256 "ff1a7ad639debfb4e6ba684706229835f3d88f5d2fb823b1781da0116d8b17bc"
+      end
+      on_intel do
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-x86_64-apple-darwin.tar.xz"
+        sha256 "1d4a47cd73ea30127fe014b89bb24e906b9626a3ec8cd188f724dba1e54d7392"
+      end
+    end
+
+    on_linux do
+      on_arm do
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-aarch64-unknown-linux-gnu.tar.xz"
+        sha256 "eb9e9067ad09839baa96d954f29471c98768b070764a4288fecb2bff61a9d900"
+      end
+      on_intel do
+        url "https://github.com/itsgg/maru/releases/download/v0.1.0-alpha.3/maru-shim-x86_64-unknown-linux-gnu.tar.xz"
+        sha256 "073e57e8a747ae7c791370c3b017f889e9c9574ee53e3e828a37c81947b745a1"
+      end
+    end
+  end
+
+  def install
+    bin.install "maru"
+    resource("maru-shim").stage do
+      bin.install "maru-shim"
+    end
+  end
+
+  def caveats
+    <<~EOS
+      Run `maru install` once to wire the shim symlinks (claude / codex / gemini)
+      into $MARU_HOME/bin and add it to your PATH:
+
+        maru install
+
+      Default $MARU_HOME (per GENESIS §3):
+        macOS:   ~/Library/Application Support/maru
+        Linux:   $XDG_DATA_HOME/maru
+    EOS
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/maru --version")
+    assert_predicate bin/"maru-shim", :executable?
+  end
+end
