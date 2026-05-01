@@ -64,16 +64,6 @@ class Maru < Formula
     # symlinks, so the shim wins regardless of what else is installed.
   end
 
-  def post_install
-    # Pre-warm macOS Gatekeeper. On macOS Sequoia (15+), first execution
-    # of an unsigned binary triggers `syspolicy` to do an online check
-    # that can take 30s–2min. Doing it here folds that latency into the
-    # `brew install` step (where users already expect to wait) instead
-    # of the subsequent `maru install` (which would otherwise appear to
-    # hang). Once cached, every later run is ~5ms. No-op on Linux.
-    system bin/"maru", "--version" if OS.mac?
-  end
-
   def caveats
     <<~EOS
       One more step — wire the per-harness shims into a maru-owned PATH
@@ -84,6 +74,12 @@ class Maru < Formula
       Then open a new terminal (or `source ~/.zshrc`). Verify with:
 
         which claude   # should be inside $MARU_HOME/bin
+
+      Heads-up on macOS: until the binaries are notarized, the FIRST run
+      of `maru install` (or any `maru` / `maru-shim` invocation) can sit
+      for 30 s – 2 min while macOS Gatekeeper does an online verification
+      against Apple's servers. Subsequent runs are ~5 ms. Tracked in
+      docs/notes/phase-4-handoff.md (APPLE_TEAM_ID etc).
 
       Default $MARU_HOME (per GENESIS §3):
         macOS:   ~/Library/Application Support/maru
